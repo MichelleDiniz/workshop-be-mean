@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  h1 Edição da cerveja #{beer.name}
+
+  form(method='POST', action='/api/beers/#{beer._id}')
+    .form-group
+      label(for='name') Name:
+      input(type='text', name='name', value='#{beer.name}')
+    .form-group
+      label(for='price') Price:
+      input(type='text', name='price', value='#{beer.price}')
+    .form-group
+      label(for='alcohol') Alcohol:
+      input(type='text', name='alcohol', value='#{beer.alcohol}')
+    .form-group
+      label(for='category') Category:
+      input(type='text', name='category', value='#{beer.category}')
+    .form-group
+      label(for='description') Description:
+      textarea(name='description') #{beer.description}
+    .form-group
+      input(type='submit', value='ALTERAR')
+      input(type='hidden', name='_method', value='PUT')
