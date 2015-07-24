@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  h1 Listagem das cervejas
+
+  ul
+  for beer in beers
+    li
+      a(href='/beers/#{beer._id}')
+        | #{beer.name} - #{beer.price} -
+      a(href='/beers/#{beer._id}/update')
+        | ALTERAR -
+      a(href='/beers/#{beer._id}/remove')
+        | DELETAR
