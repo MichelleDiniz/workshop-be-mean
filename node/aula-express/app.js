@@ -8,10 +8,6 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
-var api = {};
-api.beers = require('./modules/beers/routes/api');
-api.use('/api/beers', api.beers);
-
 var app = express();
 
 // view engine setup
@@ -28,6 +24,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
+
+var api = {};
+api.beers = require('./modules/beers/routes/api');
+app.use('/api/beers', api.beers);
+
+app.use('/beers', require('./modules/beers/routes'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
